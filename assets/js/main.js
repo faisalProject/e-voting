@@ -8,4 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.classList.toggle('active')
     body.classList.toggle('active')
   }) : null
+
+  var cardWrapper = [...document.querySelectorAll('.card-wrapper')];
+  var prevBtn = [...document.querySelectorAll('.prev-btn')];
+  var nextBtn = [...document.querySelectorAll('.next-btn')];
+  cardWrapper ? cardWrapper.forEach((item, i) => {
+    let containerDimensions = item.getBoundingClientRect();
+    let containerWidth = containerDimensions.width;
+
+    nextBtn ? nextBtn[i].addEventListener('click', () => {
+      item.scrollLeft += containerWidth;
+    }): null
+
+    prevBtn ? prevBtn[i].addEventListener('click', () => {
+      item.scrollLeft -= containerWidth
+    }): null
+  }): null
 })

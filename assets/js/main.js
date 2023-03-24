@@ -24,4 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
       item.scrollLeft -= containerWidth
     }): null
   }): null
+
+  var pagesScroll = document.querySelectorAll('.page-scroll');
+    pagesScroll ? pagesScroll.forEach(scroll => {
+        scroll.addEventListener('click', (e) => {
+            var hrefElement = scroll.getAttribute('href');
+            var destinationElements = document.querySelector(hrefElement);
+    
+            var offset = destinationElements.offsetTop - 50;
+            document.querySelector('html, body').scrollTop = offset;
+            e.preventDefault();
+        });
+    }): null;
 })

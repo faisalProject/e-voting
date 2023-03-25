@@ -61,8 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'you must login first!',
-      footer: '<a href="">Sign in</a>'
+      html: '<p class="paragraf-text">You must login first!</p>',
+      footer: '<a class="footer-text" href="signin.html">Sign in</a>'
+    })
+  }): null
+
+  var show = document.querySelectorAll('.show')
+  var inputType = document.querySelectorAll('.input-type')
+  show ? show.forEach((s, i) => {
+    s.addEventListener('click', () => {
+      s.classList.toggle('active')
+      inputType[i].type === 'password' ? inputType[i].type = 'text' : inputType[i].type = 'password'
     })
   }): null
 })

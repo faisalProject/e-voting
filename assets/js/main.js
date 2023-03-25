@@ -35,5 +35,34 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('html, body').scrollTop = offset;
             e.preventDefault();
         });
-    }): null;
+  }): null;
+
+  var coreVissionText = document.querySelector('.core-vision-text');
+  var coreVissionDescription = document.querySelector('.core-vision-description')
+  var coreMissionText = document.querySelector('.core-mission-text')
+  var coreMissionDescription = document.querySelector('.core-mission-description')
+
+  var visionText = document.getElementsByClassName('vision-text');
+  var visionDescription = document.getElementsByClassName('vision-description')
+  var missionText = document.getElementsByClassName('mission-text')
+  var missionDescription = document.getElementsByClassName('mission-description')
+  var cards = document.querySelectorAll('.card');
+  cards ? cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      coreVissionText.innerHTML = visionText[i].innerHTML
+      coreVissionDescription.innerHTML = visionDescription[i].innerHTML
+      coreMissionText.innerHTML = missionText[i].innerHTML
+      coreMissionDescription.innerHTML = missionDescription[i].innerHTML
+    })
+  }): null
+
+  var more = document.querySelector('.more')
+  more ? more.addEventListener('click', () => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'you must login first!',
+      footer: '<a href="">Sign in</a>'
+    })
+  }): null
 })

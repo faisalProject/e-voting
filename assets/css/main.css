@@ -255,7 +255,7 @@ nav > .container > .right-menu > .hamburger > span {
   height: 35px;
   font-size: 13px;
   font-family: 'QuickBold', sans-serif;
-  max-width: 100px;
+  max-width: 120px;
   color: #3d3d3d;
   text-align: center;
   text-decoration: none;
@@ -423,7 +423,7 @@ nav > .container > .right-menu > .hamburger > span {
 
 .candidate-contents > .container > .candidate > .right > .more {
   height: 35px;
-  max-width: 150px;
+  max-width: 90px;
   border: 1px solid #FAE455;
   background-color: #FAE455;
   border-radius: 5px;
@@ -433,6 +433,24 @@ nav > .container > .right-menu > .hamburger > span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: #FAE455 !important;
+  font-size: 14px !important;
+  font-family: 'QuickBold', sans-serif !important;
+  color: #3d3d3d !important;
+  height: 35px !important;
+  box-shadow: none !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px !important;
+  border: 1px solid #FAE455 !important;
 }
 
 /* footer */

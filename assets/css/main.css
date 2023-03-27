@@ -52,6 +52,7 @@ nav {
   background-color: rgba(255, 255, 255, .5);
   backdrop-filter: blur(4px);
   box-shadow: 0 .5px 20px -2px rgba(30, 144, 255, .1);
+  /* border: 1px solid #333; */
 }
 
 nav.active {
@@ -78,6 +79,10 @@ nav > .container > .right-menu {
   gap: 20px;
   align-items: center;
   /* border: 1px solid #333; */
+}
+
+nav > .container > .right-menu > p {
+  margin: 0 !important;
 }
 
 nav > .container > .right-menu > .button {
@@ -117,7 +122,9 @@ nav > .container > .right-menu > .button > .btn-signin:hover,
 .mobile-navbar > .button > .btn-signin:hover,
 .jumbotron > .description > .lets-choose:hover,
 .candidate-contents > .container > .candidate > .right > .more:hover,
-.signin-contents > .signin > .middle > .btn-signin:hover {
+.candidate-contents > .container > .candidate > .right > .main-more:hover,
+.signin-contents > .signin > .middle > .btn-signin:hover,
+.candidate-list-contents > .candidate-card > .description > .bottom > .btn-more:hover {
   background-color: #fce763;
 }
 
@@ -140,7 +147,8 @@ nav > .container > .left-menu > .beranda > a,
 nav > .container > .left-menu > .candidate-list > a, 
 nav > .container > .left-menu > .about > a,
 .mobile-navbar > .candidate-list > a,
-.mobile-navbar > .about > a {
+.mobile-navbar > .about > a,
+nav > .container > .right-menu > p {
   text-decoration: none;
   color: #3f3f46;
   font-size: 14px;
@@ -160,6 +168,85 @@ nav > .container > .right-menu > .hamburger > span {
   height: 2px;
   display: block;
   background-color: #3f3f46;
+}
+
+nav > .container > .right-menu > .dropdown {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+nav > .container > .right-menu > .dropdown > .profile {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+nav > .container > .right-menu > .dropdown > .profile > img {
+  width: 35px;
+  border-radius: 50%;
+  margin: 0 !important;
+  padding: 1px;
+  border: 2px solid #11c5c6;
+}
+
+nav > .container > .right-menu > .dropdown > .menu {
+  position: absolute;
+  border: 1px solid #ced4da;
+  min-width: 120px;
+  /* min-height: 100px; */
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  transition: .5s;
+  z-index: 1;
+  background-color: #fff;
+  opacity: 0;
+}
+
+nav > .container > .right-menu > .dropdown > .menu > a {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #3d3d3d;
+  font-family: 'QuickBold', sans-serif;
+}
+
+nav > .container > .right-menu > .dropdown > .menu > a:first-child {
+  padding-bottom: 5px;
+}
+
+nav > .container > .right-menu > .dropdown > .menu > a:last-child {
+  padding-top: 5px;
+  color: #f43f5e;
+}
+
+nav > .container > .right-menu > .dropdown > .menu > a:hover {
+  background-color: #f9f9f9;
+}
+
+nav > .container > .right-menu > .dropdown > .profile > .bi-chevron-down {
+  transition: .5s;
+}
+
+nav > .container > .right-menu > .dropdown > .profile:hover > .bi-chevron-down,
+nav > .container > .right-menu > .dropdown > .profile.active > .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+nav > .container > .right-menu > .dropdown > .profile:hover ~ .menu,
+nav > .container > .right-menu > .dropdown > .menu:hover {
+  margin-top: 40px;
+  visibility: visible;
+  opacity: 1;
 }
 
 @keyframes navbarSmoothActive {
@@ -348,6 +435,8 @@ nav > .container > .right-menu > .hamburger > span {
 .candidate-contents > .container > .candidate > .left > .card {
   min-width: 180px;
   border: 1px solid #ced4da;
+  /* border: 1px solid red; */
+  max-height: 400px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -374,22 +463,27 @@ nav > .container > .right-menu > .hamburger > span {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  border-top: 1px solid #ced4da
 }
 
-.candidate-contents > .container > .candidate > .left > .card > .description > .top {
+.candidate-contents > .container > .candidate > .left > .card > .description > .top,
+.candidate-list-contents > .candidate-card > .description > .top {
   border-bottom: .1px solid #ced4da;
   padding-bottom: 10px;
 }
 
 .candidate-contents > .container > .candidate > .left > .card > .description > .top,
-.candidate-contents > .container > .candidate > .left > .card > .description > .bottom {
+.candidate-contents > .container > .candidate > .left > .card > .description > .bottom,
+.candidate-list-contents > .candidate-card > .description > .top,
+.candidate-list-contents > .candidate-card > .description > .bottom {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.candidate-contents > .container > .candidate > .left > .card > .description > .bottom {
+.candidate-contents > .container > .candidate > .left > .card > .description > .bottom,
+.candidate-list-contents > .candidate-card > .description > .bottom {
   padding-top: 10px;
 }
 
@@ -398,7 +492,9 @@ nav > .container > .right-menu > .hamburger > span {
 .candidate-contents > .container > .candidate > .right > .vision > p,
 .candidate-contents > .container > .candidate > .right > .mission > p,
 .footer > .box:nth-child(1) > p,
-.footer > .box:nth-child(2) .contacts > p {
+.footer > .box:nth-child(2) .contacts > p,
+.candidate-list-contents > .candidate-card > .description > .top > p,
+.candidate-list-contents > .candidate-card > .description > .bottom > p {
   color: #3d3d3d;
   font-size: 14px;
   font-family: 'QuicksandMedium', sans-serif;
@@ -429,7 +525,9 @@ nav > .container > .right-menu > .hamburger > span {
   margin-bottom: 0;
 }
 
-.candidate-contents > .container > .candidate > .right > .more {
+.candidate-contents > .container > .candidate > .right > .more,
+.candidate-contents > .container > .candidate > .right > .main-more,
+.candidate-list-contents > .candidate-card > .description > .bottom > .btn-more {
   height: 35px;
   max-width: 90px;
   border: 1px solid #FAE455;
@@ -441,6 +539,18 @@ nav > .container > .right-menu > .hamburger > span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.candidate-contents > .container > .candidate > .right > .main-more {
+  text-decoration: none;
+}
+
+.candidate-list-contents > .candidate-card > .description > .bottom > .btn-more {
+  font-size: 13px;
+  height: 30px;
+  text-decoration: none;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hidden {
@@ -662,6 +772,43 @@ nav > .container > .right-menu > .hamburger > span {
   border-radius: 5px;
 }
 
+/* candidate-list */
+.candidate-list-contents {
+  min-height: 300px;
+  /* border: 1px solid #ced3da; */
+  margin-top: 60px;
+  margin-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: min-content;
+  grid-auto-rows: min-content;
+}
+
+.candidate-list-contents > .candidate-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #ced4da;
+}
+
+.candidate-list-contents > .candidate-card > img {
+  width: 100%;
+}
+
+.candidate-list-contents > .candidate-card > .description {
+  width: 100%;
+  /* min-height: 100px; */
+  border-top: 1px solid #ced4da;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
 /* about */
 .about-contents {
   margin-top: 60px;
@@ -733,6 +880,46 @@ nav > .container > .right-menu > .hamburger > span {
   gap: 10px;
 }
 
+/* candidate-details */
+.candidate-details-contents {
+  margin-top: 60px;
+  /* border: 1px solid #ced4da; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.candidate-details-contents > .top {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.candidate-details-contents > .top > .left {
+  width: 70%;
+  min-height: 300px;
+  border: 1px solid #ced4da;
+  border-radius: 5px
+}
+
+.candidate-details-contents > .top > .right {
+  flex: 1;
+  border: 1px solid #ced3da;
+  border-radius: 5px;
+}
+
+.candidate-details-contents > .bottom {
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
 /* footer */
 .footer {
   min-height: 200px;
@@ -800,6 +987,11 @@ nav > .container > .right-menu > .hamburger > span {
   .about-contents > .top > .right {
     width: 590px;
   }
+
+  .candidate-list-contents {
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+  }
 }
 
 
@@ -817,11 +1009,25 @@ nav > .container > .right-menu > .hamburger > span {
     width: 100%;
     min-height: 200px;
   }
+
+  .candidate-list-contents {
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .jumbotron > img {
     max-width: 45%;
+  }
+
+  .candidate-list-contents {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+
+  .candidate-details-contents > .top > .left {
+    width: 60%;
   }
 }
 
@@ -829,7 +1035,8 @@ nav > .container > .right-menu > .hamburger > span {
   nav > .container > .left-menu > .candidate-list,
   nav > .container > .left-menu > .about,
   nav > .container > .right-menu > .button,
-  .jumbotron > .description:nth-child(1) {
+  .jumbotron > .description:nth-child(1),
+  nav > .container > .right-menu > p {
     display: none;
   }
 
@@ -859,6 +1066,11 @@ nav > .container > .right-menu > .hamburger > span {
     width: 100%;
   }
 
+  .candidate-list-contents {
+    grid-template-columns: repeat(2, 180px);
+    justify-content: center;
+  }
+
   .footer {
     flex-direction: column;
     align-items: center;
@@ -873,11 +1085,27 @@ nav > .container > .right-menu > .hamburger > span {
     text-align: center;
   }
 
+  .candidate-details-contents > .top {
+    flex-direction: column;
+  }
+
+  .candidate-details-contents > .top > .left {
+    width: 100%;
+  }
+
+  .candidate-details-contents > .top > .right {
+    width: 100%;
+    min-height: 300px;
+  }
 }
 
 @media screen and (max-width: 380px) {
   .signin-contents > .signin {
     width: 100%;
+  }
+
+  .candidate-list-contents {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

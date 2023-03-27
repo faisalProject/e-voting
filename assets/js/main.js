@@ -74,4 +74,30 @@ document.addEventListener('DOMContentLoaded', () => {
       inputType[i].type === 'password' ? inputType[i].type = 'text' : inputType[i].type = 'password'
     })
   }): null
+
+  var menu = document.querySelector('.menu');
+  var profile = document.querySelector('.profile');
+  profile ? profile.addEventListener('mousemove', () => {
+    profile.classList.add('active');
+  }): null
+
+  profile ? profile.addEventListener('mouseleave', () => {
+    profile.classList.remove('active');
+  }): null
+
+  menu ? menu.addEventListener('mousemove', () => {
+    profile.classList.add('active');
+  }): null
+  
+  menu ? menu.addEventListener('mouseleave', () => {
+    profile.classList.remove('active');
+  }): null
+  
+  var menuList = document.querySelectorAll('.menu-list')
+  profile ? window.addEventListener('click', (e) => {
+    if(e.target !== profile && e.target !== menu && e.target !== menuList[0] && e.target!== menuList[1] ) {
+      profile.classList.remove('active');
+    }
+  }): null
+  
 })

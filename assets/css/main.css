@@ -124,7 +124,8 @@ nav > .container > .right-menu > .button > .btn-signin:hover,
 .candidate-contents > .container > .candidate > .right > .more:hover,
 .candidate-contents > .container > .candidate > .right > .main-more:hover,
 .signin-contents > .signin > .middle > .btn-signin:hover,
-.candidate-list-contents > .candidate-card > .description > .bottom > .btn-more:hover {
+.candidate-list-contents > .candidate-card > .description > .bottom > .btn-more:hover,
+.candidate-details-contents > .top > .left > .mission > .btn-choose:hover {
   background-color: #fce763;
 }
 
@@ -494,7 +495,10 @@ nav > .container > .right-menu > .dropdown > .menu:hover {
 .footer > .box:nth-child(1) > p,
 .footer > .box:nth-child(2) .contacts > p,
 .candidate-list-contents > .candidate-card > .description > .top > p,
-.candidate-list-contents > .candidate-card > .description > .bottom > p {
+.candidate-list-contents > .candidate-card > .description > .bottom > p,
+.candidate-details-contents > .top > .right > .description > .list > p,
+.candidate-details-contents > .top > .left > .vision > ol > li,
+.candidate-details-contents > .top > .left > .mission > p {
   color: #3d3d3d;
   font-size: 14px;
   font-family: 'QuicksandMedium', sans-serif;
@@ -518,7 +522,9 @@ nav > .container > .right-menu > .dropdown > .menu:hover {
 }
 
 .candidate-contents > .container > .candidate > .right > .vision > h3,
-.candidate-contents > .container > .candidate > .right > .mission > h3 {
+.candidate-contents > .container > .candidate > .right > .mission > h3,
+.candidate-details-contents > .top > .left > .vision > h3,
+.candidate-details-contents > .top > .left > .mission > h3 {
   font-size: 22px;
   font-family: 'QuicksandMedium', sans-serif;
   color: #3d3d3d;
@@ -899,25 +905,91 @@ nav > .container > .right-menu > .dropdown > .menu:hover {
 }
 
 .candidate-details-contents > .top > .left {
-  width: 70%;
-  min-height: 300px;
+  width: 75%;
+  /* min-height: 600px; */
   border: 1px solid #ced4da;
-  border-radius: 5px
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate-details-contents > .top > .left > .vision {
+  width: 100%;
+  min-height: 100px;
+  /* border: 1px solid #ced4da; */
+  padding: 20px 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.candidate-details-contents > .top > .left > .mission {
+  width: 100%;
+  min-height: 100px;
+  /* border: 1px solid #ced4da; */
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.candidate-details-contents > .top > .left > .vision > h3,
+.candidate-details-contents > .top > .left > .mission > h3 {
+  text-align: center;
+}
+
+.candidate-details-contents > .top > .left > .mission > .btn-choose {
+  max-width: 80px;
+  height: 35px;
+  border: 1px solid #FAE455;
+  background-color: #FAE455;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-family: 'QuickBold', sans-serif;
+  color: #3d3d3d;
+  border-radius: 5px;
 }
 
 .candidate-details-contents > .top > .right {
   flex: 1;
   border: 1px solid #ced3da;
   border-radius: 5px;
-}
-
-.candidate-details-contents > .bottom {
-  width: 100%;
-  min-height: 200px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  max-height: 500px;
+}
+
+.candidate-details-contents > .top > .right:first-child {
+  display: none;
+}
+
+.candidate-details-contents > .top > .right > img {
+  width: 100%;
+}
+
+.candidate-details-contents > .top > .right > .description {
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid #ced3da; */
+}
+
+.candidate-details-contents > .top > .right > .description > .list {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ced4da;
+}
+
+.candidate-details-contents > .top > .right > .description > .list:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 /* footer */
@@ -1036,13 +1108,15 @@ nav > .container > .right-menu > .dropdown > .menu:hover {
   nav > .container > .left-menu > .about,
   nav > .container > .right-menu > .button,
   .jumbotron > .description:nth-child(1),
-  nav > .container > .right-menu > p {
+  nav > .container > .right-menu > p,
+  .candidate-details-contents > .top > .right:last-child {
     display: none;
   }
 
   nav > .container > .right-menu > .hamburger,
   .mobile-navbar,
-  .jumbotron > .description:nth-child(3) {
+  .jumbotron > .description:nth-child(3),
+  .candidate-details-contents > .top > .right:first-child {
     display: flex;
   }
 
@@ -1096,6 +1170,15 @@ nav > .container > .right-menu > .dropdown > .menu:hover {
   .candidate-details-contents > .top > .right {
     width: 100%;
     min-height: 300px;
+  }
+
+  .candidate-details-contents > .top > .right {
+    max-height: 900px;
+  }
+
+  .candidate-details-contents > .top > .left > .vision,
+  .candidate-details-contents > .top > .left > .mission {
+    padding: 10px;
   }
 }
 

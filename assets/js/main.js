@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       icon: 'error',
       title: 'Oops...',
       html: '<p class="paragraf-text">You must login first!</p>',
+      confirmButtonColor: '#FAE455',
+      confirmButtonText: 'Ok',
       footer: '<a class="footer-text" href="signin.html">Sign in</a>'
     })
   }): null
@@ -98,6 +100,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if(e.target !== profile && e.target !== menu && e.target !== menuList[0] && e.target!== menuList[1] ) {
       profile.classList.remove('active');
     }
+  }): null
+
+  var btnChoose = document.querySelector('.btn-choose');
+  btnChoose ? btnChoose.addEventListener('click', () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      html: "<p class='caption'>Want to vote for this candidate<p>",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FAE455',
+      cancelButtonColor: '#F44E3F',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Success!',
+          html: '<p class="caption">You have selected this candidate.</p>',
+          icon: 'success',
+          confirmButtonColor: '#FAE455',
+          confirmButtonText: 'Ok'
+        })
+      }
+    })
   }): null
   
 })

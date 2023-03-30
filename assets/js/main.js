@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavbar.classList.toggle('active')
     nav.classList.toggle('active')
     body.classList.toggle('active')
+    profile.classList.toggle('pointer-events')
   }) : null
 
   var cardWrapper = [...document.querySelectorAll('.card-wrapper')];
